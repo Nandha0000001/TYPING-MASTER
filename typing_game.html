@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% block title %}TypeMaster AI - Typing Game{% endblock %}
+
+{% block content %}
+<div class="row mt-4">
+    <div class="col-lg-10 offset-lg-1">
+        <h1 class="mb-4">Typing Game</h1>
+        <p class="lead">Have fun while improving your typing skills with this fast-paced word game.</p>
+        
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h3 class="mb-0">Game Settings</h3>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="d-flex justify-content-md-end">
+                            <select id="game-difficulty" class="form-select me-2" style="width: auto;">
+                                <option value="easy">Easy</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                            <button id="game-start-btn" class="btn btn-light">Start Game</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body game-container" id="game-container">
+                <div class="row mb-4">
+                    <div class="col-md-6 text-center">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <div class="game-score" id="score-display">0</div>
+                                <div class="stats-label">Score</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <div class="card bg-dark">
+                            <div class="card-body">
+                                <div class="game-timer" id="time-display">60</div>
+                                <div class="stats-label">Seconds Left</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="word-display" id="word-display">
+                    Press "Start Game" to begin
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <input type="text" id="game-input" class="form-control form-control-lg" placeholder="Type the word here..." disabled>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Type each word as quickly and accurately as possible before time runs out!
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Game Over Modal -->
+        <div class="modal fade" id="game-over-modal" tabindex="-1" aria-labelledby="gameOverLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title" id="gameOverLabel">Game Over!</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h2>Your Score: <span id="final-score">0</span></h2>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <div class="card bg-dark">
+                                    <div class="card-body">
+                                        <h4 id="final-wpm">0</h4>
+                                        <p class="mb-0">WPM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="card bg-dark">
+                                    <div class="card-body">
+                                        <h4 id="final-accuracy">0%</h4>
+                                        <p class="mb-0">Accuracy</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="play-again-btn">Play Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/typing_game.js') }}"></script>
+{% endblock %}

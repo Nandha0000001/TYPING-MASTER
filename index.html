@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block title %}TypeMaster AI - Home{% endblock %}
+
+{% block content %}
+<div class="row mt-4">
+    <div class="col-lg-8 offset-lg-2 text-center">
+        <h1 class="display-4 mb-4">TypeMaster AI</h1>
+        <p class="lead">Advanced typing speed predictor and practice platform with ML-powered analysis</p>
+        <div class="my-5">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-tachometer-alt fa-3x mb-3 text-primary"></i>
+                            <h3 class="card-title">Speed Tests</h3>
+                            <p class="card-text">Take typing tests with ML-powered prediction of your future typing speed.</p>
+                            <a href="/typing-test" class="btn btn-primary mt-2">Test Your Speed</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-graduation-cap fa-3x mb-3 text-success"></i>
+                            <h3 class="card-title">Learn & Practice</h3>
+                            <p class="card-text">Structured lessons from beginner to advanced to improve your skills.</p>
+                            <a href="/lessons" class="btn btn-success mt-2">Start Learning</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-gamepad fa-3x mb-3 text-info"></i>
+                            <h3 class="card-title">Fun Games</h3>
+                            <p class="card-text">Make practice enjoyable with typing games that improve your speed and accuracy.</p>
+                            <a href="/typing-game" class="btn btn-info mt-2">Play Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-lg-10 offset-lg-1">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Features</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4><i class="fas fa-chart-line me-2 text-primary"></i>Performance Analysis</h4>
+                        <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item">Accurate WPM and accuracy calculation</li>
+                            <li class="list-group-item">Detailed error analysis and identification</li>
+                            <li class="list-group-item">Progress tracking with visual charts</li>
+                            <li class="list-group-item">Historical data persistence</li>
+                        </ul>
+
+                        <h4><i class="fas fa-brain me-2 text-primary"></i>AI-Powered Features</h4>
+                        <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item">ML-based typing speed prediction</li>
+                            <li class="list-group-item">Keystroke dynamics analysis</li>
+                            <li class="list-group-item">NLP for error pattern recognition</li>
+                            <li class="list-group-item">Personalized improvement suggestions</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4><i class="fas fa-keyboard me-2 text-primary"></i>Practice Tools</h4>
+                        <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item">Difficulty-based typing tests</li>
+                            <li class="list-group-item">Progressive touch typing lessons</li>
+                            <li class="list-group-item">Word-based typing games</li>
+                            <li class="list-group-item">Real-time feedback during practice</li>
+                        </ul>
+
+                        <h4><i class="fas fa-robot me-2 text-primary"></i>Support Features</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Typing assistant chatbot</li>
+                            <li class="list-group-item">Ergonomic typing tips</li>
+                            <li class="list-group-item">Common keyboard shortcuts guide</li>
+                            <li class="list-group-item">Finger exercises for typists</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-lg-8 offset-lg-2 text-center">
+        <h2>Get Started Today</h2>
+        <p class="lead">Begin your journey to faster, more accurate typing with our AI-powered platform.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
+            <a href="/typing-test" class="btn btn-primary btn-lg px-4 gap-3">Take a Test</a>
+            <a href="/progress" class="btn btn-outline-secondary btn-lg px-4">View Your Progress</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

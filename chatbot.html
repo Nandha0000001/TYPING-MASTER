@@ -1,0 +1,248 @@
+{% extends "layout.html" %}
+
+{% block title %}TypeMaster AI - Typing Assistant{% endblock %}
+
+{% block content %}
+<div class="row mt-4">
+    <div class="col-lg-10 offset-lg-1">
+        <h1 class="mb-4">Typing Assistant</h1>
+        <p class="lead">Ask questions about typing techniques, speed improvement, ergonomics, and more.</p>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">Chat with Typing Assistant</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="chat-container">
+                            <div class="chat-messages" id="chat-messages">
+                                <!-- Messages will appear here -->
+                            </div>
+                            <div class="message-input-container border-top">
+                                <input type="text" id="message-input" class="form-control message-input" placeholder="Type your question here...">
+                                <button id="send-button" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h3 class="mb-0">Suggested Questions</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush" id="suggested-questions">
+                            <!-- Suggested questions will be added here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mt-4">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="mb-0">Typing Resources</h3>
+                    </div>
+                    <div class="card-body">
+                        <h5>Keyboard Layout Reference</h5>
+                        <div class="text-center mb-3">
+                            <div class="bg-dark p-2 rounded">
+                                <svg width="100%" height="100%" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- QWERTY Keyboard Layout SVG -->
+                                    <rect x="5" y="5" width="790" height="270" rx="10" fill="#222" stroke="#666" stroke-width="2"/>
+                                    <!-- Function Keys Row -->
+                                    <g class="function-keys">
+                                        <rect x="15" y="15" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="37.5" y="37.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">Esc</text>
+                                        <!-- F1-F12 Keys -->
+                                        <rect x="70" y="15" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="92.5" y="37.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">F1</text>
+                                        <rect x="125" y="15" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="147.5" y="37.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">F2</text>
+                                        <rect x="180" y="15" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="202.5" y="37.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">F3</text>
+                                        <rect x="235" y="15" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="257.5" y="37.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">F4</text>
+                                        <rect x="290" y="15" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="312.5" y="37.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">F5</text>
+                                        <rect x="345" y="15" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="367.5" y="37.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">F6</text>
+                                        <rect x="400" y="15" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="422.5" y="37.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">F7</text>
+                                        <rect x="455" y="15" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="477.5" y="37.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">F8</text>
+                                        <rect x="510" y="15" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="532.5" y="37.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">F9</text>
+                                        <rect x="565" y="15" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="587.5" y="37.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">F10</text>
+                                        <rect x="620" y="15" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="642.5" y="37.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">F11</text>
+                                        <rect x="675" y="15" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="697.5" y="37.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">F12</text>
+                                    </g>
+                                    <!-- Numbers Row -->
+                                    <g class="numbers-row">
+                                        <rect x="15" y="70" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="37.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">~</text>
+                                        <rect x="70" y="70" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="92.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">1</text>
+                                        <rect x="125" y="70" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="147.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">2</text>
+                                        <rect x="180" y="70" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="202.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">3</text>
+                                        <rect x="235" y="70" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="257.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">4</text>
+                                        <rect x="290" y="70" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="312.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">5</text>
+                                        <rect x="345" y="70" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="367.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">6</text>
+                                        <rect x="400" y="70" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="422.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">7</text>
+                                        <rect x="455" y="70" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="477.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">8</text>
+                                        <rect x="510" y="70" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="532.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">9</text>
+                                        <rect x="565" y="70" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="587.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">0</text>
+                                        <rect x="620" y="70" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="642.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">-</text>
+                                        <rect x="675" y="70" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="697.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">+</text>
+                                        <rect x="730" y="70" width="55" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="757.5" y="92.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">⌫</text>
+                                    </g>
+                                    <!-- QWERTY Row -->
+                                    <g class="qwerty-row">
+                                        <rect x="15" y="125" width="65" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="47.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">Tab</text>
+                                        <rect x="90" y="125" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="112.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">Q</text>
+                                        <rect x="145" y="125" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="167.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">W</text>
+                                        <rect x="200" y="125" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="222.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">E</text>
+                                        <rect x="255" y="125" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="277.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">R</text>
+                                        <rect x="310" y="125" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="332.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">T</text>
+                                        <rect x="365" y="125" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="387.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">Y</text>
+                                        <rect x="420" y="125" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="442.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">U</text>
+                                        <rect x="475" y="125" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="497.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">I</text>
+                                        <rect x="530" y="125" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="552.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">O</text>
+                                        <rect x="585" y="125" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="607.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">P</text>
+                                        <rect x="640" y="125" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="662.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">[</text>
+                                        <rect x="695" y="125" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="717.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">]</text>
+                                        <rect x="750" y="125" width="35" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="767.5" y="147.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">\</text>
+                                    </g>
+                                    <!-- ASDF Row -->
+                                    <g class="asdf-row">
+                                        <rect x="15" y="180" width="75" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="52.5" y="202.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">Caps</text>
+                                        <rect x="100" y="180" width="45" height="45" rx="5" fill="#4CAF50" stroke="#666"/>
+                                        <text x="122.5" y="202.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">A</text>
+                                        <rect x="155" y="180" width="45" height="45" rx="5" fill="#4CAF50" stroke="#666"/>
+                                        <text x="177.5" y="202.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">S</text>
+                                        <rect x="210" y="180" width="45" height="45" rx="5" fill="#4CAF50" stroke="#666"/>
+                                        <text x="232.5" y="202.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">D</text>
+                                        <rect x="265" y="180" width="45" height="45" rx="5" fill="#4CAF50" stroke="#666"/>
+                                        <text x="287.5" y="202.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">F</text>
+                                        <rect x="320" y="180" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="342.5" y="202.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">G</text>
+                                        <rect x="375" y="180" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="397.5" y="202.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">H</text>
+                                        <rect x="430" y="180" width="45" height="45" rx="5" fill="#4CAF50" stroke="#666"/>
+                                        <text x="452.5" y="202.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">J</text>
+                                        <rect x="485" y="180" width="45" height="45" rx="5" fill="#4CAF50" stroke="#666"/>
+                                        <text x="507.5" y="202.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">K</text>
+                                        <rect x="540" y="180" width="45" height="45" rx="5" fill="#4CAF50" stroke="#666"/>
+                                        <text x="562.5" y="202.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">L</text>
+                                        <rect x="595" y="180" width="45" height="45" rx="5" fill="#4CAF50" stroke="#666"/>
+                                        <text x="617.5" y="202.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">;</text>
+                                        <rect x="650" y="180" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="672.5" y="202.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">'</text>
+                                        <rect x="705" y="180" width="80" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="745" y="202.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">Enter</text>
+                                    </g>
+                                    <!-- ZXCV Row -->
+                                    <g class="zxcv-row">
+                                        <rect x="15" y="235" width="90" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="60" y="257.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">Shift</text>
+                                        <rect x="115" y="235" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="137.5" y="257.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">Z</text>
+                                        <rect x="170" y="235" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="192.5" y="257.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">X</text>
+                                        <rect x="225" y="235" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="247.5" y="257.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">C</text>
+                                        <rect x="280" y="235" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="302.5" y="257.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">V</text>
+                                        <rect x="335" y="235" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="357.5" y="257.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">B</text>
+                                        <rect x="390" y="235" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="412.5" y="257.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">N</text>
+                                        <rect x="445" y="235" width="45" height="45" rx="5" fill="#444" stroke="#666"/>
+                                        <text x="467.5" y="257.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">M</text>
+                                        <rect x="500" y="235" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="522.5" y="257.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">,</text>
+                                        <rect x="555" y="235" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="577.5" y="257.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">.</text>
+                                        <rect x="610" y="235" width="45" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="632.5" y="257.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">/</text>
+                                        <rect x="665" y="235" width="120" height="45" rx="5" fill="#333" stroke="#666"/>
+                                        <text x="720" y="257.5" fill="#fff" text-anchor="middle" dominant-baseline="middle">Shift</text>
+                                    </g>
+                                    <!-- Legend -->
+                                    <g class="legend" transform="translate(15, 290)">
+                                        <rect x="0" y="0" width="15" height="15" fill="#4CAF50"/>
+                                        <text x="20" y="12" fill="#fff" font-size="12">Home Row Keys</text>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <h5>Common Keyboard Shortcuts</h5>
+                        <table class="table table-sm table-dark">
+                            <tbody>
+                                <tr>
+                                    <td><kbd>Ctrl</kbd>+<kbd>C</kbd></td>
+                                    <td>Copy</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd>Ctrl</kbd>+<kbd>V</kbd></td>
+                                    <td>Paste</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td>
+                                    <td>Undo</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd>Ctrl</kbd>+<kbd>S</kbd></td>
+                                    <td>Save</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd>Alt</kbd>+<kbd>Tab</kbd></td>
+                                    <td>Switch apps</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+{% endblock %}

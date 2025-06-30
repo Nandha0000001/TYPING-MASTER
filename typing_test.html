@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}TypeMaster AI - Typing Test{% endblock %}
+
+{% block content %}
+<div class="row mt-4">
+    <div class="col-lg-10 offset-lg-1">
+        <h1 class="mb-4">Typing Speed Test</h1>
+        <p class="lead">Test your typing speed and get AI-powered analysis of your performance.</p>
+        
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h3 class="mb-0">Test Settings</h3>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <div class="d-flex justify-content-md-end">
+                            <select id="difficulty" class="form-select me-2" style="width: auto;">
+                                <option value="easy">Easy</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                            <button id="start-btn" class="btn btn-light me-2">Start Test</button>
+                            <button id="end-btn" class="btn btn-danger" style="display: none;">End Test</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-4 text-center">
+                        <div class="timer-display" id="timer">0:00</div>
+                        <div class="stats-label">Time</div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="wpm-display" id="wpm-display">0</div>
+                        <div class="stats-label">WPM</div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="accuracy-display" id="accuracy-display">100%</div>
+                        <div class="stats-label">Accuracy</div>
+                    </div>
+                </div>
+                
+                <div class="text-display border bg-body-tertiary" id="text-display">
+                    Select difficulty and press "Start Test" to begin.
+                </div>
+                
+                <textarea id="user-input" class="typing-input form-control" placeholder="Start typing here..." disabled></textarea>
+                
+                <div class="text-center mt-3">
+                    <div class="alert alert-info">
+                        <strong>Predicted Final Speed:</strong> <span id="predicted-wpm">N/A</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" id="results-section" style="display: none;">
+            <div class="card-header bg-success text-white">
+                <h3 class="mb-0">Test Results & Analysis</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="error-details">
+                            <!-- Error analysis will be displayed here -->
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="suggestions-list">
+                            <!-- Suggestions will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/typing_test.js') }}"></script>
+{% endblock %}

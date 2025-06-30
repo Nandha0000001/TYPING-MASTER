@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block title %}TypeMaster AI - Typing Lessons{% endblock %}
+
+{% block content %}
+<div class="row mt-4">
+    <div class="col-lg-10 offset-lg-1">
+        <h1 class="mb-4">Typing Lessons</h1>
+        <p class="lead">Structured lessons to help you improve your typing skills step by step.</p>
+        
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="mb-0">Lesson Selection</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="lesson-selector" class="form-label">Choose a lesson:</label>
+                            <select id="lesson-selector" class="form-select">
+                                <option value="1">Lesson 1: Home Row Basics</option>
+                                <option value="2">Lesson 2: Home Row Words</option>
+                                <option value="3">Lesson 3: Adding E and I</option>
+                                <option value="4">Lesson 4: Top Row Basics</option>
+                                <option value="5">Lesson 5: Bottom Row Basics</option>
+                                <option value="6">Lesson 6: Numbers and Symbols</option>
+                                <option value="7">Lesson 7: Full Keyboard Integration</option>
+                                <option value="8">Lesson 8: Speed Building</option>
+                                <option value="9">Lesson 9: Accuracy Practice</option>
+                                <option value="10">Lesson 10: Programming Syntax</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <button id="start-lesson-btn" class="btn btn-success w-100">Start Lesson</button>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <div class="card bg-dark">
+                                <div class="card-body">
+                                    <h5 class="card-title">Lesson Tips</h5>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check me-2"></i> Focus on accuracy first</li>
+                                        <li><i class="fas fa-check me-2"></i> Don't look at your keyboard</li>
+                                        <li><i class="fas fa-check me-2"></i> Keep your fingers on home row</li>
+                                        <li><i class="fas fa-check me-2"></i> Practice regularly</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="mb-0" id="lesson-title">Lesson 1: Home Row Basics</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-3" id="lesson-description">Learn the home row keys (ASDF JKL;)</p>
+                        
+                        <div class="lesson-content border bg-body-tertiary" id="lesson-content">
+                            Loading lesson content...
+                        </div>
+                        
+                        <div class="progress lesson-progress-container mt-3">
+                            <div id="lesson-progress" class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        
+                        <textarea id="lesson-input" class="form-control mt-3" rows="3" placeholder="Start typing when ready..." disabled></textarea>
+                        
+                        <div id="lesson-results" class="mt-4" style="display: none;">
+                            <div class="alert alert-success">
+                                <h4 class="alert-heading" id="lesson-completion">Lesson completed successfully!</h4>
+                                <div class="row mt-3">
+                                    <div class="col-6">
+                                        <div class="card bg-dark text-center">
+                                            <div class="card-body">
+                                                <h4 id="lesson-wpm">0</h4>
+                                                <p class="mb-0">WPM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card bg-dark text-center">
+                                            <div class="card-body">
+                                                <h4 id="lesson-accuracy">0%</h4>
+                                                <p class="mb-0">Accuracy</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/lessons.js') }}"></script>
+{% endblock %}

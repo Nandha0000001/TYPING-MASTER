@@ -1,0 +1,280 @@
+/* Custom styles for typing application */
+
+:root {
+    /* Primary theme colors */
+    --primary-color: #4CAF50;
+    --secondary-color: #2196F3;
+    --accent-color: #FF9800;
+    --success-color: #4CAF50;
+    --info-color: #2196F3;
+    --warning-color: #FFC107;
+    --danger-color: #f44336;
+}
+
+/* Base styles */
+body {
+    background-color: #030303;
+    color: #ffffff;
+}
+
+/* Card customization */
+.card {
+    background-color: #2d2d2d;
+    border-color: #404040;
+}
+
+.card-header {
+    background-color: var(--primary-color);
+    border-bottom: 1px solid #404040;
+}
+
+/* Button customization */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-info {
+    background-color: var(--info-color);
+    border-color: var(--info-color);
+}
+
+/* Navigation customization */
+.navbar {
+    background-color: #1a1a1a !important;
+    border-bottom: 1px solid #404040;
+}
+
+/* Progress bars */
+.progress-bar {
+    background-color: var(--primary-color);
+}
+
+/* Form elements */
+.form-control {
+    background-color: #333333;
+    border-color: #404040;
+    color: #ffffff;
+}
+
+.form-control:focus {
+    background-color: #404040;
+    border-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* Custom elements */
+.timer-display, .wpm-display, .accuracy-display {
+    color: var(--primary-color);
+}
+
+.text-display {
+    background-color: #333333 !important;
+    border-color: #404040 !important;
+    color: #ffffff !important;
+}
+
+/* General styles */
+body {
+    padding-top: 70px;
+}
+
+.content-container {
+    min-height: calc(100vh - 160px);
+}
+
+.footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+/* Typing test styles */
+.text-display {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+    font-family: 'Courier New', monospace;
+}
+
+.typing-input {
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.timer-display, .wpm-display, .accuracy-display {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.stats-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.results-section {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Typing game styles */
+.game-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.word-display {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 30px 0;
+    min-height: 60px;
+}
+
+.game-score {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.game-timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Lesson styles */
+.lesson-content {
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    padding: 20px;
+    line-height: 1.6;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+}
+
+.lesson-progress-container {
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+/* Progress charts */
+.chart-container {
+    position: relative;
+    margin: 20px 0;
+    height: 300px;
+}
+
+/* Chatbot styles */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    border-radius: 5px;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 80%;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: var(--bs-primary);
+    color: white;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: var(--bs-secondary);
+    color: white;
+}
+
+.message-input-container {
+    display: flex;
+    padding: 10px;
+}
+
+.message-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+/* Typing animation */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+}
+
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 0 2px;
+    display: inline-block;
+    animation: typing 1s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .text-display, .typing-input, .lesson-content {
+        font-size: 1rem;
+        padding: 10px;
+    }
+    
+    .word-display {
+        font-size: 1.5rem;
+    }
+    
+    .chart-container {
+        height: 250px;
+    }
+    
+    .message {
+        max-width: 90%;
+    }
+}
